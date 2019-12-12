@@ -14,13 +14,13 @@
   },
 
   // Uncomment the next line if you want to publish any ports.
-  // "appPort": [],
+  "appPort": [80],
 
   // Uncomment the next line to run commands after the container is created.
-  "postCreateCommand": "php -v",
+  "postCreateCommand": "php -v"
 
-  "extensions": [
-    "felixfbecker.php-debug",
-    "felixfbecker.php-intellisense"
-  ]
+  // "extensions": [
+  //   "felixfbecker.php-debug",
+  //   "felixfbecker.php-intellisense"
+  // ]
 }
