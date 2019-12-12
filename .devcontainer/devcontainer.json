@@ -17,7 +17,7 @@
   // "appPort": [],
 
   // Uncomment the next line to run commands after the container is created.
-  // "postCreateCommand": "php -v",
+  "postCreateCommand": "php -v",
 
   "extensions": [
     "felixfbecker.php-debug",
