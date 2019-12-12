@@ -1,31 +1,26 @@
+// https://github.com/microsoft/vscode-remote-try-php/blob/master/.devcontainer/devcontainer.json
 {
-	"name": "Alpine 3.10",
-	"dockerFile": "Dockerfile",
-	
-	// Uncomment the next line to have VS Code connect as an existing non-root user in the container. 
-	// On Linux, by default, the container user's UID/GID will be updated to match your local user. See
-	// https://aka.ms/vscode-remote/containers/non-root for details on adding a non-root user if none exist.
-	// "remoteUser": "vscode",
+  "name": "PHP",
+  "dockerFile": "Dockerfile",
 
-	// Uncomment the next line if you will use a ptrace-based debugger like C++, Go, and Rust
-	// "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
-	
-	// Use 'settings' to set *default* container specific settings.json values on container create. 
-	// You can edit these settings after create using File > Preferences > Settings > Remote.
-	"settings": {
-		// This dev container does include /bin/bash if you prefer to use it instead of ash.
-		"terminal.integrated.shell.linux": "/bin/ash"
-	},
+  // Comment out the next line to run as root instead. Linux users, update
+  // Dockerfile with your user's UID/GID if not 1000.
+  "runArgs": ["-u", "vscode"],
 
-	// Use 'appPort' to create a container with published ports. If the port isn't working, be sure
-	// your server accepts connections from all interfaces (0.0.0.0 or '*'), not just localhost.
-	// "appPort": [],
+  // Use 'settings' to set *default* container specific settings.json values on container create. 
+  // You can edit these settings after create using File > Preferences > Settings > Remote.
+  "settings": {
+      "terminal.integrated.shell.linux": "/bin/bash"
+  },
 
-	// Uncomment the next line to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
+  // Uncomment the next line if you want to publish any ports.
+  // "appPort": [80],
 
-	// Add the IDs of extensions you want installed when the container is created in the array 
-	// below. Note that some extensions may not work in Alpine Linux due to glibc dependencies 
-	// in native code inside the extension. See https://aka.ms/vscode-remote/linux for details.
-	"extensions": []
+  // Uncomment the next line to run commands after the container is created.
+  "postCreateCommand": "php -v",
+
+  "extensions": [
+    "felixfbecker.php-debug",
+    "felixfbecker.php-intellisense"
+  ]
 }
