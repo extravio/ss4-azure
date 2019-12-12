@@ -1,20 +1,26 @@
-/* Contents of {repository-root}/.devcontainer/devcontainer.json */
+// https://github.com/microsoft/vscode-remote-try-php/blob/master/.devcontainer/devcontainer.json
 {
-  // Open port 3000 by default
-  "appPort": 80,
+  "name": "PHP",
+  "dockerFile": "Dockerfile",
 
-  // Install ESLint and Peacock extensions
-  // "extensions": [
-  //   "dbaeumer.vscode-eslint",
-  //   "johnpapa.vscode-peacock"
-  // ],
+  // Comment out the next line to run as root instead. Linux users, update
+  // Dockerfile with your user's UID/GID if not 1000.
+  "runArgs": ["-u", "vscode"],
 
-  // Set remote color for Peacock
-  // "settings": {
-  //   "peacock.remoteColor": "#0078D7"
-  // },
+  // Use 'settings' to set *default* container specific settings.json values on container create. 
+  // You can edit these settings after create using File > Preferences > Settings > Remote.
+  "settings": {
+      "terminal.integrated.shell.linux": "/bin/bash"
+  },
 
-  // Run Bash script in .devcontainer directory
-  // "postCreateCommand": "/bin/bash ./.devcontainer/post-create.sh > ~/post-create.log",
-  "dockerFile": "../docker/Dockerfile"
+  // Uncomment the next line if you want to publish any ports.
+  // "appPort": [],
+
+  // Uncomment the next line to run commands after the container is created.
+  // "postCreateCommand": "php -v",
+
+  "extensions": [
+    "felixfbecker.php-debug",
+    "felixfbecker.php-intellisense"
+  ]
 }
