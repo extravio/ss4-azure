@@ -10,7 +10,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
   php73:
-    build:
+    container_name: php73
+    build:      
       context: .
       dockerfile: Dockerfile
     ports:
