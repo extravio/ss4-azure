@@ -1,0 +1,19 @@
+version: "3"
+services:
+  mariadb:
+    container_name: mariadb
+    image: mariadb:10
+    ports:
+      - "3306:3306"
+    volumes:
+      - ..:/workspace:cached
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+  php73:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+       - ..:/workspace:cached
