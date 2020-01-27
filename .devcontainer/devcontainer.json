@@ -1,7 +1,10 @@
 // https://github.com/microsoft/vscode-remote-try-php/blob/master/.devcontainer/devcontainer.json
 {
   "name": "PHP",
-  "dockerFile": "Dockerfile",
+  // "dockerFile": "Dockerfile",
+  "dockerComposeFile": "docker-compose.yml",
+  "workspaceFolder": "/var/www/html",
+  "service": "php73",
 
   // Comment out the next line to run as root instead. Linux users, update
   // Dockerfile with your user's UID/GID if not 1000.

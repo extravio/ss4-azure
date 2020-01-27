@@ -11,8 +11,8 @@ services:
       - MYSQL_ROOT_PASSWORD=root
   php73:
     container_name: php73
-    image: extravioar/phpaz
+    image: extravioar/php-vso
     ports:
       - "80:80"
-    # volumes:
-    #    - ..:/workspace:cached
+    volumes:
+      - ..:/workspace:cached
