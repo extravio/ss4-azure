@@ -5,16 +5,14 @@ services:
     image: mariadb:10
     ports:
       - "3306:3306"
-    volumes:
-      - ..:/workspace:cached
+    # volumes:
+    #   - ..:/workspace:cached
     environment:
       - MYSQL_ROOT_PASSWORD=root
   php73:
     container_name: php73
-    build:      
-      context: .
-      dockerfile: Dockerfile
+    image: extravioar/phpaz
     ports:
       - "80:80"
-    volumes:
-       - ..:/workspace:cached
+    # volumes:
+    #    - ..:/workspace:cached
