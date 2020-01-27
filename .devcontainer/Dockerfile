@@ -13,9 +13,9 @@ RUN apt-get update && \
     apt-get -y install --no-install-recommends apt-utils dialog 2>&1 && \
     #
     # Install git, procps, lsb-release (useful for CLI installs)
-    apt-get -y install git procps iproute2 lsb-release vim.tiny && \
-            wget curl gzip g++ openssh-client libmagickwand-dev && \
-            libcurl4-openssl-dev libgd-dev libjpeg-dev libpng-dev libldap2-dev libtidy-dev libxslt-dev zlib1g-dev libzip-dev libicu-dev && \
+    apt-get -y install git procps iproute2 lsb-release vim.tiny \
+            wget curl gzip g++ openssh-client libmagickwand-dev \
+            libcurl4-openssl-dev libgd-dev libjpeg-dev libpng-dev libldap2-dev libtidy-dev libxslt-dev zlib1g-dev libzip-dev libicu-dev \
             mariadb-client && \
     curl -sS https://silverstripe.github.io/sspak/install | php -- /usr/local/bin && \
     curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && \
