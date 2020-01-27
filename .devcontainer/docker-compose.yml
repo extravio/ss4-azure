@@ -1,18 +1,20 @@
 version: "3"
 services:
-  mariadb:
-    container_name: mariadb
-    image: mariadb:10
-    ports:
-      - "3306:3306"
-    # volumes:
-    #   - ..:/workspace:cached
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
   php73:
-    container_name: php73
+    user: vscode
     image: extravioar/php-vso
     ports:
       - "80:80"
     volumes:
       - ..:/workspace:cached
+    # Overrides default command so things don't shut down after the process ends.
+    command: /bin/sh -c "while sleep 1000; do :; done"  
+  # mariadb:
+  #   container_name: mariadb
+  #   image: mariadb:10
+  #   ports:
+  #     - "3306:3306"
+  #   # volumes:
+  #   #   - ..:/workspace:cached
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=root
