@@ -6,4 +6,5 @@ https://github.com/microsoft/vscode-remote-try-php
 
 
 1. Create an environment
-2. 
+2. Connect to environment
+3. 
