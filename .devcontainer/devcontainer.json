@@ -20,7 +20,7 @@
   // "appPort": [80],
 
   // Uncomment the next line to run commands after the container is created.
-  "postCreateCommand": "php -v && sudo service apache2 start",
+  "postCreateCommand": "php -v",
 
   "extensions": [
     "felixfbecker.php-debug",
