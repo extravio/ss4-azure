@@ -11,7 +11,7 @@ services:
     volumes:
       - ..:/workspace:cached
     # Overrides default command so things don't shut down after the process ends.
-    command: apache2-foreground
+    command: /bin/sh -c "while sleep 1000; do :; done"
   # mariadb:
   #   container_name: mariadb
   #   image: mariadb:10
