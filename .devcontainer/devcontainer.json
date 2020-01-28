@@ -1,10 +1,11 @@
 // https://github.com/microsoft/vscode-remote-try-php/blob/master/.devcontainer/devcontainer.json
 {
   "name": "PHP",
-  // "dockerFile": "Dockerfile",
-  "dockerComposeFile": "docker-compose.yml",
-  "workspaceFolder": "/workspace",
-  "service": "php73",
+  // "dockerComposeFile": "docker-compose.yml",
+  // "service": "php73",
+  "dockerFile": "Dockerfile",
+  "workspaceFolder": "/var/www/html",
+  
 
   // Comment out the next line to run as root instead. Linux users, update
   // Dockerfile with your user's UID/GID if not 1000.
@@ -17,10 +18,10 @@
   },
 
   // Uncomment the next line if you want to publish any ports.
-  "appPort": [80],
+  // "appPort": [80],
 
   // Uncomment the next line to run commands after the container is created.
-  "postCreateCommand": "sudo service apache2 restart",
+  "postCreateCommand": "php -v",
 
   "extensions": [
     "felixfbecker.php-debug",
