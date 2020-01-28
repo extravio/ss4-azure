@@ -17,10 +17,10 @@
   },
 
   // Uncomment the next line if you want to publish any ports.
-  // "appPort": [80],
+  "appPort": [80],
 
   // Uncomment the next line to run commands after the container is created.
-  "postCreateCommand": "php -v",
+  "postCreateCommand": "sudo service apache2 restart",
 
   "extensions": [
     "felixfbecker.php-debug",

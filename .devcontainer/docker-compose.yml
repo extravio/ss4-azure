@@ -2,16 +2,13 @@ version: "3"
 services:
   php73:
     user: vscode
-    # Using a Dockerfile is optional, but included for completeness.
-    build: 
-      context: .
-      dockerfile: Dockerfile
+    image: php/7.3-apache
     ports:
       - "80:80"
     volumes:
       - ..:/workspace:cached
     # Overrides default command so things don't shut down after the process ends.
-    command: /bin/sh -c "while sleep 1000; do :; done"
+    command: /bin/sh -c "while sleep 1000; do :; done"  
   # mariadb:
   #   container_name: mariadb
   #   image: mariadb:10
