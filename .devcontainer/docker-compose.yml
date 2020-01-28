@@ -1,22 +1,22 @@
 version: "3"
 services:
-  php73:
-    user: vscode
-    build: 
-      context: .
-      dockerfile: Dockerfile
+  # php73:
+  #   user: vscode
+  #   build: 
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - ..:/workspace:cached
+  #   # Overrides default command so things don't shut down after the process ends.
+  #   command: /bin/sh -c "while sleep 1000; do :; done"  
+  mariadb:
+    container_name: mariadb
+    image: mariadb:10
     ports:
-      - "80:80"
+      - "3306:3306"
     volumes:
       - ..:/workspace:cached
-    # Overrides default command so things don't shut down after the process ends.
-    command: /bin/sh -c "while sleep 1000; do :; done"  
-  # mariadb:
-  #   container_name: mariadb
-  #   image: mariadb:10
-  #   ports:
-  #     - "3306:3306"
-  #   # volumes:
-  #   #   - ..:/workspace:cached
-  #   environment:
-  #     - MYSQL_ROOT_PASSWORD=root
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
