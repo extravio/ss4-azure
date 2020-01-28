@@ -2,7 +2,10 @@ version: "3"
 services:
   php73:
     user: vscode
-    image: php/7.3-apache
+    # Using a Dockerfile is optional, but included for completeness.
+    build: 
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "80:80"
     volumes:
