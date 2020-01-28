@@ -1,22 +1,20 @@
 version: "3"
 services:
-  # php73:
-  #   user: vscode
-  #   build: 
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "80:80"
-  #   volumes:
-  #     - ..:/workspace:cached
-  #   # Overrides default command so things don't shut down after the process ends.
-  #   command: /bin/sh -c "while sleep 1000; do :; done"  
-  mariadb:
-    container_name: mariadb
-    image: mariadb:10
+  php73:
+    user: vscode
+    image: php/7.3-apache
     ports:
-      - "3306:3306"
+      - "80:80"
     volumes:
       - ..:/workspace:cached
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
+    # Overrides default command so things don't shut down after the process ends.
+    command: sudo service apache2 start"
+  # mariadb:
+  #   container_name: mariadb
+  #   image: mariadb:10
+  #   ports:
+  #     - "3306:3306"
+  #   # volumes:
+  #   #   - ..:/workspace:cached
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=root
