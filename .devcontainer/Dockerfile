@@ -20,6 +20,9 @@ RUN apt-get update \
     # Install git, procps, lsb-release (useful for CLI installs)
     && apt-get -y install git procps iproute2 lsb-release vim.tiny \
     #
+    # Fix ServerName warning
+    && echo "ServerName localhost" >> /etc/apache2/apache2.conf \
+    #
     # Install xdebug
     && yes | pecl install xdebug \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
