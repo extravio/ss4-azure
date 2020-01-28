@@ -5,7 +5,7 @@
 
   // Comment out the next line to run as root instead. Linux users, update
   // Dockerfile with your user's UID/GID if not 1000.
-  "runArgs": ["-u", "vscode"],
+  // "runArgs": ["-u", "vscode"],
 
   // Use 'settings' to set *default* container specific settings.json values on container create. 
   // You can edit these settings after create using File > Preferences > Settings > Remote.
@@ -17,11 +17,11 @@
   // "appPort": [80],
 
   // Uncomment the next line to run commands after the container is created.
-  "postCreateCommand": "php -v",
-  "overrideCommand": false,
+  "postCreateCommand": "php -v"
+  // "overrideCommand": false,
 
-  "extensions": [
-    "felixfbecker.php-debug",
-    "felixfbecker.php-intellisense"
-  ]
+  // "extensions": [
+  //   "felixfbecker.php-debug",
+  //   "felixfbecker.php-intellisense"
+  // ]
 }

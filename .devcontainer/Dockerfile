@@ -1,1 +1,1 @@
-FROM extravioar/php-vso
+FROM php/7.3-apache
