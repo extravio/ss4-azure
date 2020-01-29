@@ -42,7 +42,7 @@ RUN apt-get update \
     # Fix ServerName warning & execute apache on port 8080
     && echo "ServerName localhost" >> /etc/apache2/apache2.conf \
     && sed -i 's/80/8080/g' /etc/apache2/ports.conf /etc/apache2/sites-enabled/000-default.conf \
-    && sed -i 's/\/var\/www\/html/\/home\/vscode\/workspace\/silverstripe\/public/g' /etc/apache2/sites-enabled/000-default.conf
+    && sed -i 's/\/var\/www\/html/\/home\/vscode\/workspace\/silverstripe\/public/g' /etc/apache2/sites-available/000-default.conf 
     
 
 # Switch back to dialog for any ad-hoc use of apt-get
