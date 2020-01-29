@@ -20,9 +20,6 @@ RUN apt-get update \
     # Install git, procps, lsb-release (useful for CLI installs)
     && apt-get -y install git procps iproute2 lsb-release vim.tiny \
     #
-    # Fix ServerName warning
-    && echo "ServerName localhost" >> /etc/apache2/apache2.conf \
-    #
     # Install xdebug
     && yes | pecl install xdebug \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
@@ -40,7 +37,12 @@ RUN apt-get update \
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    #
+    # Fix ServerName warning & execute apache on port 8080
+    && echo "ServerName localhost" >> /etc/apache2/apache2.conf \
+    && sed -i 's/80/8080/g' /etc/apache2/ports.conf /etc/apache2/sites-enabled/000-default.conf
+    
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=
