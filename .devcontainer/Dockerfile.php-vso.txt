@@ -53,6 +53,8 @@ RUN apt-get update && \
     sed -i 's/\/var\/www\/html/\/home\/vscode\/workspace\/silverstripe\/public/g' /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-available/default-ssl.conf && \
     sed -i 's/\/var\/www/\/home\/vscode\/workspace/g' /etc/apache2/apache2.conf && \
     sed -i 's/_default_:443/*:8443/g' /etc/apache2/sites-available/default-ssl.conf && \
+    cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini && \
+    echo "date.timezone = Pacific/Auckland" >> /usr/local/etc/php/php.ini && \
     #
     # Clean up
     apt-get autoremove -y && \
