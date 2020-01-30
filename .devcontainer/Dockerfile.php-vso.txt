@@ -13,10 +13,11 @@ RUN apt-get update && \
     apt-get -y install --no-install-recommends apt-utils dialog 2>&1 && \
     #
     # Install git, procps, lsb-release (useful for CLI installs)
+    # Install ssl-cert to get the "snakeoil" certs
     apt-get -y install git procps iproute2 lsb-release vim.tiny \
             wget curl gzip g++ openssh-client libmagickwand-dev \
             libcurl4-openssl-dev libgd-dev libjpeg-dev libpng-dev libldap2-dev libtidy-dev libxslt-dev zlib1g-dev libzip-dev libicu-dev \
-            mariadb-client && \
+            mariadb-client ssl-cert && \
     curl -sS https://silverstripe.github.io/sspak/install | php -- /usr/local/bin && \
     curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && \
     pecl install imagick-3.4.3 && \
@@ -47,7 +48,7 @@ RUN apt-get update && \
     # Fix ServerName warning & execute apache on port 8080 & set Document root to the workspace
     echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
     sed -i 's/80/8080/g' /etc/apache2/ports.conf /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-available/000-default.conf && \
-    sed -i 's/\/var\/www\/html/\/home\/vscode\/workspace\/silverstripe\/public/g' /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabled/000-default.conf && \
+    sed -i 's/\/var\/www\/html/\/home\/vscode\/workspace\/silverstripe\/public/g' /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-enabled/default-ssl.conf && \
     sed -i 's/\/var\/www/\/home\/vscode\/workspace/g' /etc/apache2/apache2.conf && \
     #
     # Clean up
@@ -67,6 +68,8 @@ RUN mkdir /usr/share/adminer && \
 
 # SilverStripe Apache Configuration
 RUN a2enmod rewrite && \
+    a2enmod ssl && \
+    a2ensite default-ssl && \
     service apache2 restart
 
 # Switch back to dialog for any ad-hoc use of apt-get
