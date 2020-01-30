@@ -70,8 +70,8 @@ RUN mkdir /usr/share/adminer && \
 
 # SilverStripe Apache Configuration
 RUN a2enmod rewrite && \
-    a2enmod ssl && \
-    a2ensite default-ssl && \
+    # a2enmod ssl && \
+    # a2ensite default-ssl && \
     service apache2 restart
 
 # Switch back to dialog for any ad-hoc use of apt-get
