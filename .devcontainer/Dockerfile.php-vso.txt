@@ -46,6 +46,7 @@ RUN apt-get update && \
     docker-php-ext-install -j$(nproc) intl gd ldap mysqli pdo pdo_mysql soap tidy xsl zip sockets && \
     #
     # Fix ServerName warning & execute apache on port 8080 & set Document root to the workspace
+    chmod -R 775 /etc/ssl/private && \
     echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
     sed -i 's/80/8080/g' /etc/apache2/ports.conf /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-available/000-default.conf && \
     sed -i 's/443/8443/g' /etc/apache2/ports.conf && \
@@ -70,8 +71,8 @@ RUN mkdir /usr/share/adminer && \
 
 # SilverStripe Apache Configuration
 RUN a2enmod rewrite && \
-    # a2enmod ssl && \
-    # a2ensite default-ssl && \
+    a2enmod ssl && \
+    a2ensite default-ssl && \
     service apache2 restart
 
 # Switch back to dialog for any ad-hoc use of apt-get
