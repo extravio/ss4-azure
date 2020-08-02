@@ -1,27 +1,35 @@
 // https://github.com/microsoft/vscode-remote-try-php/blob/master/.devcontainer/devcontainer.json
 {
-  "name": "PHP",
-  "dockerFile": "Dockerfile",
+	"name": "PHP",
+	"build": {
+		"dockerfile": "Dockerfile",
+		//"args": { 
+			// Update VARIANT to pick a PHP version
+			//"VARIANT": "7",
+			//"INSTALL_NODE": "true",
+			//"NODE_VERSION": "lts/*"
+		//}
+	},
+	
+	// Set *default* container specific settings.json values on container create.
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
 
-  // Comment out the next line to run as root instead. Linux users, update
-  // Dockerfile with your user's UID/GID if not 1000.
-  "runArgs": ["-u", "vscode"],
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"felixfbecker.php-debug",
+		"felixfbecker.php-intellisense"
+	],
 
-  // Use 'settings' to set *default* container specific settings.json values on container create. 
-  // You can edit these settings after create using File > Preferences > Settings > Remote.
-  "settings": {
-      "terminal.integrated.shell.linux": "/bin/bash"
-  },
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+  "forwardPorts": [8080, 8443],
 
-  // Uncomment the next line if you want to publish any ports.
-  "appPort": [8080, 8443],
-
-  // Uncomment the next line to run commands after the container is created.
+	// Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "php -v",
   "overrideCommand": false,
 
-  "extensions": [
-    "felixfbecker.php-debug",
-    "felixfbecker.php-intellisense"
-  ]
+	// Comment out to use the root user instead. See https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode"
 }
