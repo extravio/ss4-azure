@@ -2,7 +2,8 @@
 {
 	"name": "PHP",
 	"build": {
-		"dockerfile": "Dockerfile",
+		// "dockerfile": "Dockerfile",
+    "dockerComposeFile": "docker-compose.yml",
 		//"args": { 
 			// Update VARIANT to pick a PHP version
 			//"VARIANT": "7",
