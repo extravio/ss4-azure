@@ -1,6 +1,6 @@
 version: "3"
 services:
-  php-vso:
+  phpvso:
     user: vscode
     image: extravioar/php-vso
     ports:
