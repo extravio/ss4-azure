@@ -4,9 +4,9 @@
 	"build": {
 		// "dockerfile": "Dockerfile",
     "dockerComposeFile": "docker-compose.yml",
-    "service": "phpvso",
+    "service": "phpcs",
     "runServices": [
-      "phpvso",
+      "phpcs",
       "mariadb"
     ],
 
