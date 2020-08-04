@@ -2,10 +2,10 @@ version: "3"
 services:
   phpvso:
     user: vscode
-    image: extravioar/php-vso
+    image: extravioar/phpcs
     ports:
-      - "8080:8080"
-      - "8443:8443"
+      - "80:80"
+      - "443:443"
     volumes:
       - ..:/workspace:cached
     # Overrides default command so things don't shut down after the process ends.

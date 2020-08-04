@@ -31,10 +31,10 @@
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
-  "forwardPorts": [8080, 8443],
+  "forwardPorts": [80, 443],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "php -v",
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
   "overrideCommand": false,
   
   "containerUser": "vscode",
