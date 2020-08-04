@@ -34,7 +34,8 @@
   "forwardPorts": [8080, 8443],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "bash .devcontainer/post-create.sh",
+	// "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "postCreateCommand": "php -v",
   "overrideCommand": false,
   
   "containerUser": "vscode",
