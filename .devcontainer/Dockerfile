@@ -1,1 +1,1 @@
-FROM extravioar/phpcs
+FROM extravioar/php-vso
