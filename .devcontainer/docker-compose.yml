@@ -1,8 +1,8 @@
 version: "3"
 services:
-  phpvso:
+  phpcs:
     user: vscode
-    image: extravioar/php-vso
+    image: extravioar/phpcs
     ports:
       - "8080:8080"
       - "8443:8443"

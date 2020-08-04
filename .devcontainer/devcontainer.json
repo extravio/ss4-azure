@@ -4,9 +4,9 @@
 	"build": {
 		// "dockerfile": "Dockerfile",
     "dockerComposeFile": "docker-compose.yml",
-    "service": "phpvso",
+    "service": "phpcs",
     "runServices": [
-      "phpvso",
+      "phpcs",
       "mariadb"
     ],
 
@@ -34,7 +34,7 @@
   "forwardPorts": [8080, 8443],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "php -v",
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
   "overrideCommand": false,
   
   "containerUser": "vscode",

@@ -45,9 +45,12 @@ RUN apt-get update && \
     docker-php-ext-enable imagick && \
     docker-php-ext-install -j$(nproc) intl gd ldap mysqli pdo pdo_mysql soap tidy xsl zip sockets && \
     #
-    # Fix ServerName warning & execute apache on port 8080 & set Document root to the workspace
+    # Fix ServerName warning & execute apache on ports 8080 & 8443
     chmod -R 775 /etc/ssl/private && \
     echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
+    sed -i 's/80/8080/g' /etc/apache2/ports.conf /etc/apache2/sites-enabled/000-default.conf && \
+    sed -i 's/443/8443/g' /etc/apache2/ports.conf && \
+    sed -i 's/_default_:443/*:8443/g' /etc/apache2/sites-available/default-ssl.conf && \
     cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini && \
     echo "date.timezone = Pacific/Auckland" >> /usr/local/etc/php/php.ini && \
     #
