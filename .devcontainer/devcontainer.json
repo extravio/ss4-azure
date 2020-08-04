@@ -2,6 +2,7 @@
 {
 	"name": "PHP",
 	"build": {
+		// "dockerfile": "Dockerfile",
     "dockerComposeFile": "docker-compose.yml",
     "service": "phpvso",
     "runServices": [
