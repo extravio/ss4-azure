@@ -4,7 +4,6 @@ services:
     user: vscode
     image: extravioar/phpcs
     ports:
-      - "8080:8080"
       - "8443:8443"
     volumes:
       - ..:/workspace:cached

@@ -60,17 +60,11 @@ RUN mkdir /usr/share/adminer && \
     echo "Alias /adminer.php /usr/share/adminer/adminer.php" | tee /etc/apache2/conf-available/adminer.conf && \
     a2enconf adminer.conf
 
-# Fix ServerName warning & execute apache on port 8080 & set Document root to the workspace
+# Fix ServerName warning & execute apache on port 8080 & 8443 (vsonline requires port 80)
 RUN chmod -R 775 /etc/ssl/private && \
     echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
-    #sed -i 's/80/8080/g' /etc/apache2/ports.conf /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-available/000-default.conf && \
     sed -i 's/80/8080/g' /etc/apache2/ports.conf /etc/apache2/sites-available/000-default.conf && \
     sed -i 's/443/8443/g' /etc/apache2/ports.conf && \
-    #echo "<Directory /home/vscode/workspace/>" >> /etc/apache2/apache2.conf  && \
-    #echo "  Options Indexes FollowSymLinks" >> /etc/apache2/apache2.conf  && \
-    #echo "  AllowOverride All" >> /etc/apache2/apache2.conf  && \
-    #echo "  Require all granted" >> /etc/apache2/apache2.conf  && \
-    #echo "</Directory>" >> /etc/apache2/apache2.conf  && \
     sed -i 's/_default_:443/*:8443/g' /etc/apache2/sites-available/default-ssl.conf && \
     cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini && \
     echo "date.timezone = Pacific/Auckland" >> /usr/local/etc/php/php.ini
@@ -78,6 +72,7 @@ RUN chmod -R 775 /etc/ssl/private && \
 # SilverStripe Apache Configuration
 RUN a2enmod rewrite && \
     a2enmod ssl && \
+    a2dissite 000-default && \
     a2ensite default-ssl && \
     service apache2 restart
 
