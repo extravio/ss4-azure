@@ -34,8 +34,8 @@
   "forwardPorts": [8443],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "php -v",
-  "overrideCommand": false,
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+   "overrideCommand": false,
   
   "containerUser": "vscode",
 	// Comment out to use the root user instead. See https://aka.ms/vscode-remote/containers/non-root.
